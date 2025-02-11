@@ -1,53 +1,48 @@
-# 🛠️ libuserlinux - Biblioteca para Gerenciamento de Usuários em Sistemas Unix Embarcados
+# 🛠️ **libuserlinux - Library for User Management in Embedded Unix Systems**  
 
-## 📌 Sobre o Projeto
+## 📌 About the Project  
+**libuserlinux** is a C library designed to simplify the creation, deletion, and management of users in real-time embedded Unix systems (RTOS).
+Designed to operate without a graphical interface, the library enables user management in resource-limited embedded systems, such as IoT devices, industrial equipment, and automation platforms.  
 
-A **libuserlinux** é uma biblioteca escrita em **C** para facilitar a criação, exclusão e gerenciamento de usuários em **sistemas Unix embarcados real-time (RTOS)**.  
+The library provides functions to:  
 
-Projetada para operar **sem interface gráfica**, a biblioteca permite manipular usuários em sistemas embarcados com **recursos limitados**, como dispositivos IoT, equipamentos industriais e plataformas de automação.  
+✅ Create users in the system  
+✅ Set passwords for users  
+✅ Remove users from the system  
+✅ Check if a user already exists  
+✅ Change user passwords  
 
-A biblioteca oferece funções para:  
+⚠️ **Note:** Some operations require a reboot to be fully applied.
 
-✅ Criar usuários no sistema  
-✅ Definir senhas para os usuários  
-✅ Remover usuários do sistema  
-✅ Verificar se um usuário já existe  
-✅ Alterar senhas de usuários  
+## 📌 Languages and Libraries
 
-⚠️ **Observação**: Algumas operações exigem **reboot** para serem totalmente aplicadas.
+- **C** – Main programming language  
+- **POSIX APIs** – For interaction with the operating system  
+- **crypt.h and shadow.h** – For password management and authentication  
+- **unistd.h and sys/types.h** – For system operations  
+- **RTOS/Embedded Linux** – Compatible with embedded Linux-based and real-time Unix-like systems  
 
-## 🚀 Tecnologias Utilizadas
+## 🎯 Target Audience and Applications  
+This library is ideal for systems that require user management without a graphical interface, including:  
 
-### 📌 Linguagens e Bibliotecas
-- **C** – Linguagem de programação principal  
-- **POSIX APIs** – Para interação com o sistema operacional  
-- **`crypt.h` e `shadow.h`** – Para gerenciamento de senhas e autenticação  
-- **`unistd.h` e `sys/types.h`** – Para operações no sistema  
-- **RTOS/Linux Embarcado** – Compatível com sistemas baseados em **Linux embarcado e Unix-like de tempo real**  
+🏭 **Industrial Automation** – Embedded Unix systems in industrial machines.  
+📡 **IoT Devices** – Equipment requiring remote control and multiple users.  
+🚀 **Real-Time Systems (RTOS)** – Critical applications with fast response requirements.  
+🔐 **Secure Infrastructure** – Platforms requiring Unix-based authentication.  
 
-## 🎯 Público-Alvo e Aplicações
+## 🖥️ How to Use
 
-Esta biblioteca é ideal para sistemas que precisam de **gerenciamento de usuários sem interface gráfica**, incluindo:
-
-- 🏭 **Automação Industrial** – Sistemas embarcados Unix em máquinas industriais.  
-- 📡 **Dispositivos IoT** – Equipamentos que exigem controle remoto e múltiplos usuários.  
-- 🚀 **Sistemas em Tempo Real (RTOS)** – Aplicações críticas com requisitos de resposta rápida.  
-- 🔐 **Infraestrutura Segura** – Plataformas que precisam de autenticação baseada em Unix.  
-
-## 🖥️ Como Usar
-
-### 📥 Clonando o Repositório
+### 📥 Cloning the Repository  
 ```sh
-git clone https://github.com/seu-usuario/libuserlinux.git
+git clone https://github.com/gerhardteduardo/libuserlinux.git
 cd libuserlinux
 ```
 
-## 🤝 Contribuições & Sugestões
+## 🤝 Contributions & Suggestions
 
-Caso tenha alguma sugestão ou feedback sobre o projeto, sinta-se à vontade para abrir uma issue ou entrar em contato.
+If you have any suggestions or feedback about the project, feel free to open an issue or get in touch.
 
-## 🌟 Agradecimento
+## 🌟 Acknowledgment
 
-Obrigado por conferir este projeto! Espero que ele seja útil como referência ou inspiração. 😊  
-Se gostou, não esqueça de dar uma ⭐ no repositório! 🚀
-
+Thank you for checking out this project! I hope it serves as a useful reference or inspiration. 😊  
+If you liked it, don't forget to give a ⭐ to the repository! 🚀
