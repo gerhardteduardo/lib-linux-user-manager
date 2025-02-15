@@ -1,17 +1,18 @@
-/**
+/*
  *
- *  @title{libuserlinux: API to add or delete Linux users}
- * 	This code implements Linux user management functions.
- * 
- *  @brief   Linux User Management Support
- *  @file    libuserlinux.c
- *  @author  Eduardo Gerhardt (comercial.eduardogerhardt@gmail.com)
+ * Module: libuserlinux.c
+ * Description: API for managing Linux users.
+ *
+ * This module implements functions for adding, deleting, and modifying user
+ * accounts and passwords in a custom Linux environment.
+ *
+ * Author: Eduardo Gerhardt (comercial.eduardogerhardt@gmail.com)
  *
  */
- 
-/* ****************
- * INCLUDED FILES *
- * ****************/
+
+/*==============================================================================
+                          INCLUDES
+==============================================================================*/
 
 /* Dependencies: */
 #include <stdio.h>
@@ -30,67 +31,48 @@
 /* Implements: */
 #include "libuserlinux.h"
 
-/* *****************
- * PRIVATE DEFINES *
- * *****************/
+/*==============================================================================
+                           PRIVATE DEFINES
+==============================================================================*/
 
 /**
- * @def PATH_PASSWD
  * @brief This path contains the Linux user database
  **/
 #define PATH_PASSWD				"/mnt/internal/config/passwd"
 
 /**
- * @def PATH_SHADOW
  * @brief This path contains the Linux user password database
  **/
 #define PATH_SHADOW				"/mnt/internal/config/shadow"
 
 /**
- * @def PATH_PASSWD
  * @brief This path contains the Linux user temp database
  **/
 #define PATH_PASSWD_TMP				"/mnt/internal/config/passwd_tmp"
 
 /**
- * @def PATH_SHADOW
  * @brief This path contains the Linux user temp password database
  **/
 #define PATH_SHADOW_TMP				"/mnt/internal/config/shadow_tmp"
 
 /**
- * @def SALT_VALUE
  * @brief Salt used to perturb the encoding algorithm
  **/
 #define SALT_VALUE				"212021918"
 
 /**
- * @def USER_INTERPRETER
  * @brief User command interpreter
  **/
 #define USER_INTERPRETER		"/bin/sh"
 
-/* **************************
- * PRIVATE TYPES DEFINITION *
- * **************************/
-
-/* *********************************
- * PROTOTYPES OF PRIVATE FUNCTIONS *
- * *********************************/
-
-/* *************************************
- * PRIVATE GLOBAL VARIABLES DEFINITION *
- * *************************************/
-
-/* *********************************
- * DEFINITION OF PRIVATE FUNCTIONS *
- * *********************************/
+/*==============================================================================
+                           PRIVATE FUNCTIONS
+==============================================================================*/
 
 /**
- * @title{Linux User Manager - Encrypt User Password}
+ * @brief This function encrypts the user's pa ssword.
  *
- * This function encrypts the user's pa ssword.
- * @param[in] pszUserPassword - User password.
+ * @param pszUserPassword - User password.
  * @return Returns encrypted password.
  */
 static char* libuserlinux_encrypt_password(char *pszUserPassword)
@@ -99,12 +81,11 @@ static char* libuserlinux_encrypt_password(char *pszUserPassword)
 }
 
 /**
- * @title{Linux User Manager - Add Username database}
+ * @brief This function add username in database.
  *
- * This function add username in database.
- * @param[in] pszUserName - Username.
- * @param[in] pszUserPassword - User password.
- * @param[in] bEnableEncryption - Encrypt the password.
+ * @param pszUserName - Username.
+ * @param pszUserPassword - User password.
+ * @param bEnableEncryption - Encrypt the password.
  * @return Returns 0 in success.
  * @return Returns -22 (EINVAL) invalid argument.
  * @return Returns -13 (EACCES) permission denied.
@@ -153,12 +134,11 @@ static int libuserlinux_addusername_database(stUserData *pstUserData)
 }
 
 /**
- * @title{Linux User Manager - Add User Password}
+ * @brief This function add user password.
  *
- * This function add user password.
- * @param[in] pszUserName - Username.
- * @param[in] pszUserPassword - User password.
- * @param[in] bEnableEncryption - Encrypt the password.
+ * @param pszUserName - Username.
+ * @param pszUserPassword - User password.
+ * @param bEnableEncryption - Encrypt the password.
  * @return Returns 0 in success.
  * @return Returns -22 (EINVAL) invalid argument.
  * @return Returns -13 (EACCES) permission denied.
@@ -214,10 +194,9 @@ static int libuserlinux_addpasswd_database(stUserData *pstUserData)
 }
 
 /**
- * @title{Linux User Manager - Del Username database}
+ * @brief  This function delete username from database.
  *
- * This function delete username from database.
- * @param[in] pszUserName - Username.
+ * @param pszUserName - Username.
  * @return Returns 0 in success.
  * @return Returns -22 (EINVAL) invalid argument.
  * @return Returns -13 (EACCES) permission denied.
@@ -270,12 +249,11 @@ static int libuserlinux_delusername_database(char *pszUsername)
 
 	return iRet;
 }
-
-/**
- * @title{Linux User Manager - Del passwd database}
+ 
+ /**
+ * @brief DThis function delete user password from database.
  *
- * This function delete user password from database.
- * @param[in] pszUserName - Username.
+ * @param pszUserName - Username. 
  * @return Returns 0 in success.
  * @return Returns -22 (EINVAL) invalid argument.
  * @return Returns -13 (EACCES) permission denied.
@@ -329,9 +307,9 @@ static int libuserlinux_delpasswd_database(char *pszUsername)
 	return iRet;
 }
 
-/* ********************************
- * DEFINITION OF PUBLIC FUNCTIONS *
- * ********************************/
+/*==============================================================================
+                           PUBLIC FUNCTIONS
+==============================================================================*/
 
 /* See header file */
 int libuserlinux_checkuser(char *pszCheckUsername)
